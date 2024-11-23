@@ -5,13 +5,38 @@
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
+    "platforms": ["ios", "android", "web"],
     "scheme": "myapp",
-    "userInterfaceStyle": "automatic",
+    "userInterfaceStyle": "dark",
     "newArchEnabled": true,
+    "androidNavigationBar": {
+      "backgroundColor": "#121212",
+      "barStyle": "light-content"
+    },
+    "androidStatusBar": {
+      "backgroundColor": "#121212",
+      "barStyle": "light-content",
+      "translucent": false
+    },
     "ios": {
       "supportsTablet": true
     },
     "android": {
+      "navigationBarColor": "#121212",
+      "navigationBarStyle": "dark",
+      "softwareKeyboardLayoutMode": "pan",
+      "intentFilters": [
+        {
+          "action": "VIEW",
+          "data": [
+            {
+              "scheme": "myapp",
+              "host": ""
+            }
+          ],
+          "category": ["BROWSABLE", "DEFAULT"]
+        }
+      ],
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
