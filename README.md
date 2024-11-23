@@ -1,51 +1,88 @@
-# Welcome to your Expo app 👋
+# React Native Expo App: Strava API Integration
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+This document outlines how to set up and run the project, key development decisions, and potential areas for improvement.
 
-## Get started
+---
 
-1. Install dependencies
+## **Project Overview**
+
+This project is a React Native app developed with Expo and integrates the Strava API to fetch and display user activity and stats data. The app demonstrates features such as authentication with Strava, fetching activity metrics, and presenting the data in a user-friendly format.
+
+---
+
+## **Setup and Running the Project**
+
+### **Prerequisites**
+
+1. Node.js (v16 or later) installed.
+2. Expo CLI installed globally:
+   ```bash
+   npm install -g expo-cli
+   ```
+3. A Strava developer account with a registered application:
+   - Obtain your _Client ID_ and _Client Secret_ from the Strava Developer Portal.
+
+### **Steps to Set Up**
+
+1. **Clone the Repository**:
+
+   ```bash
+   git clone <repository-url>
+   cd <project-directory>
+   ```
+
+2. **Install Dependencies**:
 
    ```bash
    npm install
    ```
 
-2. Start the app
+3. **Set Up Environment Variables**:  
+   Create a `.env` file in the root directory with the following content (there is a sample .env in the root directory):
 
-   ```bash
-    npx expo start
+   ```plaintext
+   EXPO_PUBLIC_CLIENT_ID=client_id
+   EXPO_PUBLIC_CLIENT_SECRET=client_secret
+   EXPO_PUBLIC_API_URL=https://www.strava.com/api/v3/
+   EXPO_PUBLIC_AUTH_URL=https://www.strava.com/oauth/authorize
+   EXPO_PUBLIC_TOKEN_URL=https://www.strava.com/oauth/token
    ```
 
-In the output, you'll find options to open the app in a
+4. **Run the App**:
+   ```bash
+   expo start
+   ```
+   Use the Expo Go app on your device or an emulator to preview the app.
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+---
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## **Assumptions and Development Decisions**
 
-## Get a fresh project
+1. **Authentication**:
 
-When you're ready, run:
+   - OAuth2 is implemented for user login via Strava. The app handles token exchanges and refresh tokens for long-term access.
+   - `expo-auth-session` was used for a streamlined authentication process in Expo.
 
-```bash
-npm run reset-project
-```
+2. **User Data**:
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+   - You need a account in Strava with data in order to use this app. If you don't have any activities in your account, you will not see any data displayed.
 
-## Learn more
+3. **UI Design**:
+   - Basic UI components are implemented to display activity details. Styling was done using React Native's `StyleSheet` and the `react-native-paper` library to handle pre-made components.
 
-To learn more about developing your project with Expo, look at the following resources:
+---
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+## **Areas for Improvement**
 
-## Join the community
+1. **UI/UX Enhancements**:
 
-Join our community of developers creating universal apps.
+   - Implement a more polished and dynamic interface using a design system library.
+   - Add dark mode and accessibility features.
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
-# react-native-challenge
+2. **Error Handling**:
+
+   - Current error handling for API requests is minimal. Adding more robust fallback mechanisms and user notifications would improve user experience.
+
+3. **Testing and Performance**:
+
+   - Conduct more extensive testing on iOS.
