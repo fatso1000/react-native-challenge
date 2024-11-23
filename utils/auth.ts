@@ -14,7 +14,6 @@ export function useStravaAuth() {
 
   const redirectUri = makeRedirectUri({
     scheme: "myapp",
-    preferLocalhost: true
   });
   
   const [request, response, promptAsync] = useAuthRequest(
